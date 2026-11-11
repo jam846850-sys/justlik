@@ -1,69 +1,63 @@
-import Image from "next/image";
+﻿import Link from "next/link";
+
+const produits = [
+  { id: 1, nom: "Robe Awa", prix: 15000, image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600" },
+  { id: 2, nom: "Ensemble Sinaya", prix: 22000, image: "https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=600" },
+  { id: 3, nom: "Top Léa", prix: 8000, image: "https://images.unsplash.com/photo-1564257577054-58d1a2c1a3c8?w=600" },
+  { id: 4, nom: "Jupe Numa", prix: 12000, image: "https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=600" },
+  { id: 5, nom: "Robe Bella", prix: 18000, image: "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600" },
+  { id: 6, nom: "Ensemble Aya", prix: 25000, image: "https://images.unsplash.com/photo-1585487000160-6ebcfceb0d03?w=600" },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <>
+      <div className="bg-[#C9A227] text-[#2B2B2B] text-center text-sm py-2 px-4">
+        Livraison partout en Côte d'Ivoire — Commande simple sur WhatsApp
+      </div>
+
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl text-[#6B1F2E] mb-6">
+            Juste ce que vous aimez.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-[#2B2B2B]/80 mb-8 max-w-2xl mx-auto">
+            Des tenues choisies avec soin, à prix justes. Pour que chaque femme se tienne droite, sans s'excuser.
+          </p>
+          <Link href="/boutique" className="bg-[#6B1F2E] text-[#FAFAFA] px-8 py-3 rounded-full hover:bg-[#6B1F2E]/90 transition">
+            Découvrir la boutique
+          </Link>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-[#FAFAFA]">
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="text-sm uppercase tracking-widest text-[#C9A227] mb-4">Notre histoire</p>
+          <p className="text-2xl md:text-3xl text-[#6B1F2E] leading-relaxed mb-8">
+            Ma mère avait une seule belle robe. Un jour, je l'ai entendue dire : "Je n'ai rien à me mettre." Ce jour-là, j'ai promis : aucune femme ne devrait avoir honte de ce qu'elle porte.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <section className="py-20 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl text-[#6B1F2E] mb-3">Nouveautés</h2>
+            <p className="text-[#2B2B2B]/70">Les dernières pièces arrivées</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+            {produits.map((p) => (
+              <div key={p.id} className="group cursor-pointer">
+                <div className="aspect-[3/4] overflow-hidden rounded-lg mb-3 bg-[#FAFAFA]">
+                  <img src={p.image} alt={p.nom} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+                </div>
+                <h3 className="text-[#6B1F2E] font-medium">{p.nom}</h3>
+                <p className="text-[#2B2B2B]/70 text-sm">{p.prix.toLocaleString("fr-FR")} FCFA</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </>
   );
 }
