@@ -1,5 +1,6 @@
-﻿"use client";
-export const dynamic = 'force-dynamic';
+﻿export const dynamic = 'force-dynamic';
+"use client";
+
 import { Suspense, useState } from "react";
 import Link from "next/link";
 import { products } from "@/lib/products";
@@ -20,18 +21,9 @@ function ProduitContent() {
 
   const handleAddToCart = () => {
     if (!tailleChoisie) return alert("Veuillez choisir une taille");
-    addItem({
-      id: produit.id,
-      nom: produit.nom,
-      prix: produit.prix,
-      image: produit.image,
-      taille: tailleChoisie,
-    });
+    addItem({ id: produit.id, nom: produit.nom, prix: produit.prix, image: produit.image, taille: tailleChoisie });
     setAjoute(true);
-    setTimeout(() => {
-      setAjoute(false);
-      router.push("/panier");
-    }, 1000);
+    setTimeout(() => { setAjoute(false); router.push("/panier"); }, 1000);
   };
 
   return (
@@ -39,17 +31,14 @@ function ProduitContent() {
       <div className="text-sm text-[#2B2B2B]/60 mb-8">
         <Link href="/boutique" className="hover:text-[#6B1F2E]">Boutique</Link> / <span className="text-[#6B1F2E]">{produit.nom}</span>
       </div>
-
       <div className="grid md:grid-cols-2 gap-12">
         <div className="aspect-[3/4] rounded-lg overflow-hidden bg-[#FAFAFA]">
           <img src={produit.image} alt={produit.nom} className="w-full h-full object-cover" />
         </div>
-
         <div>
           <p className="text-sm uppercase tracking-widest text-[#C9A227] mb-2">{produit.categorie}</p>
           <h1 className="text-4xl text-[#6B1F2E] mb-4">{produit.nom}</h1>
           <p className="text-3xl text-[#2B2B2B] mb-8">{produit.prix.toLocaleString("fr-FR")} FCFA</p>
-
           <div className="mb-8">
             <p className="font-medium text-[#6B1F2E] mb-3">Taille</p>
             <div className="flex gap-3">
@@ -60,7 +49,6 @@ function ProduitContent() {
               ))}
             </div>
           </div>
-
           <div className="space-y-3">
             <a href={`https://wa.me/2250000000000?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#6B1F2E] text-[#FAFAFA] px-8 py-4 rounded-full hover:bg-[#6B1F2E]/90 transition font-medium">
               Commander sur WhatsApp
