@@ -1,5 +1,4 @@
-﻿export const dynamic = 'force-dynamic';
-"use client";
+﻿"use client";
 
 import { Suspense, useState } from "react";
 import Link from "next/link";
@@ -50,7 +49,7 @@ function ProduitContent() {
             </div>
           </div>
           <div className="space-y-3">
-            <a href={`https://wa.me/2250000000000?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#6B1F2E] text-[#FAFAFA] px-8 py-4 rounded-full hover:bg-[#6B1F2E]/90 transition font-medium">
+            <a href={`https://wa.me/2250716444871?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#6B1F2E] text-[#FAFAFA] px-8 py-4 rounded-full hover:bg-[#6B1F2E]/90 transition font-medium">
               Commander sur WhatsApp
             </a>
             <button onClick={handleAddToCart} className={`block w-full text-center border-2 px-8 py-4 rounded-full transition font-medium ${ajoute ? "border-green-600 bg-green-600 text-white" : "border-[#6B1F2E] text-[#6B1F2E] hover:bg-[#6B1F2E] hover:text-[#FAFAFA]"}`}>
