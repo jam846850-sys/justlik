@@ -1,8 +1,8 @@
 ﻿"use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useState, useEffect } from "react";
 import Link from "next/link";
-import { products } from "@/lib/products";
+import { supabase } from "@/lib/supabase";
 import { useCart } from "@/context/CartContext";
 import { useParams, useRouter } from "next/navigation";
 
@@ -10,10 +10,21 @@ function ProduitContent() {
   const { id } = useParams();
   const router = useRouter();
   const { addItem } = useCart();
-  const produit = products.find((p) => p.id === Number(id));
+  const [produit, setProduit] = useState<any>(null);
   const [tailleChoisie, setTailleChoisie] = useState("");
   const [ajoute, setAjoute] = useState(false);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    async function load() {
+      const { data } = await supabase.from("products").select("*").eq("id", id).single();
+      if (data) setProduit(data);
+      setLoading(false);
+    }
+    load();
+  }, [id]);
+
+  if (loading) return <div className="py-20 text-center">Chargement...</div>;
   if (!produit) return <div className="py-20 text-center">Produit introuvable</div>;
 
   const whatsappMessage = encodeURIComponent(`Bonjour JustLik, je suis intéressée par : ${produit.nom} (${produit.prix.toLocaleString("fr-FR")} FCFA).`);
@@ -41,7 +52,7 @@ function ProduitContent() {
           <div className="mb-8">
             <p className="font-medium text-[#6B1F2E] mb-3">Taille</p>
             <div className="flex gap-3">
-              {produit.tailles.map((t) => (
+              {produit.tailles?.map((t: string) => (
                 <button key={t} onClick={() => setTailleChoisie(t)} className={`w-12 h-12 border rounded-md transition ${tailleChoisie === t ? "bg-[#6B1F2E] text-white border-[#6B1F2E]" : "border-[#6B1F2E]/30 text-[#2B2B2B] hover:border-[#6B1F2E]"}`}>
                   {t}
                 </button>
@@ -49,7 +60,7 @@ function ProduitContent() {
             </div>
           </div>
           <div className="space-y-3">
-            <a href={`https://wa.me/2250716444871?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#6B1F2E] text-[#FAFAFA] px-8 py-4 rounded-full hover:bg-[#6B1F2E]/90 transition font-medium">
+            <a href={`https://wa.me/2250000000000?text=${whatsappMessage}`} target="_blank" rel="noopener noreferrer" className="block w-full text-center bg-[#6B1F2E] text-[#FAFAFA] px-8 py-4 rounded-full hover:bg-[#6B1F2E]/90 transition font-medium">
               Commander sur WhatsApp
             </a>
             <button onClick={handleAddToCart} className={`block w-full text-center border-2 px-8 py-4 rounded-full transition font-medium ${ajoute ? "border-green-600 bg-green-600 text-white" : "border-[#6B1F2E] text-[#6B1F2E] hover:bg-[#6B1F2E] hover:text-[#FAFAFA]"}`}>
