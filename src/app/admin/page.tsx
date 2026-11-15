@@ -16,7 +16,7 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "justlik2026") {
+    if (password === "Justmomo225") {
       setIsAuthenticated(true);
       localStorage.setItem("justlik_admin", "true");
     } else {
